@@ -5,7 +5,9 @@ public class Main {
 
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
-        initAddressBookExercise(addressBook);
+        //initAddressBookExercise(addressBook);
+        addressBook.init("AddressInputDataFile.txt");
+        addressBook.list();
     }
 
     public static void initAddressBookExercise(AddressBook ab) {

@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,26 +45,69 @@ public class AddressBook {
             while (fileReader.hasNextLine()) {
                 // Depending on which interval assign to what
                 switch (index) {
-                    case 0: fName = fileReader.nextLine();
-                    case 1: lName = fileReader.nextLine();
-                    case 2: street = fileReader.nextLine();
-                    case 3: city = fileReader.nextLine();
-                    case 4: state = fileReader.nextLine();
-                    case 5:
-                        String temp = fileReader.nextLine();
+                    case 0:
                         try {
-                            zip = Integer.parseInt(temp);
-                        } catch (NumberFormatException e) {
-                            System.out.println("Improper zip in file.");
+                            fName = fileReader.nextLine();
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
                         }
-                    case 6: email = fileReader.nextLine();
-                    case 7: tel = fileReader.nextLine();
+                    case 1:
+                        try {
+                            lName = fileReader.nextLine();
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
+                        }
+                    case 2:
+                        try {
+                            street = fileReader.nextLine();
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
+                        }
+                    case 3:
+                        try {
+                            city = fileReader.nextLine();
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
+                        }
+                    case 4:
+                        try {
+                            state = fileReader.nextLine();
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
+                        }
+                    case 5:
+                        try {
+                            String temp = fileReader.nextLine();
+                            try {
+                                zip = Integer.parseInt(temp);
+                            } catch (NumberFormatException e) {
+                                System.out.println("Improper zip in file.");
+                            }
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
+                        }
+
+                    case 6:
+                        try {
+                            email = fileReader.nextLine();
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
+                        }
+                    case 7:
+                        try {
+                            tel = fileReader.nextLine();
+                        } catch (NoSuchElementException e) {
+                            System.out.println("Reached EOF while parsing.");
+                        }
+
+                        // Add entry to book
+                        this.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
                 }
                 index = (index + 1) % 8;
             }
 
-            // Add entry to book
-            this.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
+            // Close the file
+            fileReader.close();
 
         // Catch exception if at any point file could not be used
         } catch (FileNotFoundException e) {
