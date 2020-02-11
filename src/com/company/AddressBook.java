@@ -20,4 +20,9 @@ public class AddressBook {
             System.out.println(e);
         }
     }
+
+    // init function to start AddressBook with its own file
+    public static void init(String filename) {
+
+    }
 }

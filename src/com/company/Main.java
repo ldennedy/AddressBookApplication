@@ -8,11 +8,6 @@ public class Main {
         initAddressBookExercise(addressBook);
     }
 
-    // init function to start AddressBook with its own file
-    public static void init(String filename) {
-
-    }
-
     public static void initAddressBookExercise(AddressBook ab) {
         // Variables to store entry information
         String fName, lName, street, city, state, tel, email;
