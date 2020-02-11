@@ -25,17 +25,24 @@ public class AddressBook {
     }
 
     // init function to start AddressBook with its own file
-    public static void init(String filename) {
+    public void init(String filename) {
         try {
             // Set up objects to begin reading the file
             File file = new File(filename);
             Scanner fileReader = new Scanner(file);
-            String fName, lName, street, city, state, tel, email;
-            int zip;
+            String fName = "";
+            String lName = "";
+            String street = "";
+            String city = "";
+            String state = "";
+            String tel = "";
+            String email = "";
+            int zip = 0;
             int index = 0;
 
             // Read all the contents in the file (while new line)
             while (fileReader.hasNextLine()) {
+                // Depending on which interval assign to what
                 switch (index) {
                     case 0: fName = fileReader.nextLine();
                     case 1: lName = fileReader.nextLine();
@@ -54,6 +61,9 @@ public class AddressBook {
                 }
                 index = (index + 1) % 8;
             }
+
+            // Add entry to book
+            this.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
 
         // Catch exception if at any point file could not be used
         } catch (FileNotFoundException e) {
