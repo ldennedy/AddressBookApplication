@@ -74,6 +74,7 @@ public class AddressBook {
             String email = "";
             int zip = 0;
             int index = 0;
+            int count = 0;
 
             // Read all the contents in the file (while new line)
             while (fileReader.hasNextLine()) {
@@ -82,30 +83,35 @@ public class AddressBook {
                     case 0:
                         try {
                             fName = fileReader.nextLine();
+                            // Debug output: System.out.println("First name read: " + fName);
                         } catch (NoSuchElementException e) {
                             System.out.println("Reached EOF while parsing.");
                         }
                     case 1:
                         try {
                             lName = fileReader.nextLine();
+                            // Debug output: System.out.println("Last name read: " + lName);
                         } catch (NoSuchElementException e) {
                             System.out.println("Reached EOF while parsing.");
                         }
                     case 2:
                         try {
                             street = fileReader.nextLine();
+                            // Debug output: System.out.println("Street read: " + street);
                         } catch (NoSuchElementException e) {
                             System.out.println("Reached EOF while parsing.");
                         }
                     case 3:
                         try {
                             city = fileReader.nextLine();
+                            // Debug output: System.out.println("City read: " + city);
                         } catch (NoSuchElementException e) {
                             System.out.println("Reached EOF while parsing.");
                         }
                     case 4:
                         try {
                             state = fileReader.nextLine();
+                            // Debug output: System.out.println("State read: " + state);
                         } catch (NoSuchElementException e) {
                             System.out.println("Reached EOF while parsing.");
                         }
@@ -114,6 +120,7 @@ public class AddressBook {
                             String temp = fileReader.nextLine();
                             try {
                                 zip = Integer.parseInt(temp);
+                                // Debug output: System.out.println("Zip code read: " + zip);
                             } catch (NumberFormatException e) {
                                 System.out.println("Improper zip in file.");
                             }
@@ -124,26 +131,33 @@ public class AddressBook {
                     case 6:
                         try {
                             email = fileReader.nextLine();
+                            // Debug output: System.out.println("Email address read: " + email);
                         } catch (NoSuchElementException e) {
                             System.out.println("Reached EOF while parsing.");
                         }
                     case 7:
                         try {
                             tel = fileReader.nextLine();
+                            // Debug output: System.out.println("Telephone number read: " + tel);
                         } catch (NoSuchElementException e) {
                             System.out.println("Reached EOF while parsing.");
                         }
 
                         // Add entry to book
                         this.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
+                        count++;
                 }
 
                 // Loop item to read based on 8 items for an address
-                index = (index + 1) % 8;
+                // How it works: Increase index by one,
+                // Mod it by 8 because there are 8 items to read for each address
+                // Subtract one because our count starts at 0
+                index = ((index + 1) % 8) - 1;
             }
 
             // Close the file
             fileReader.close();
+            System.out.println(count + " addresses were successfully read from the file \'" + filename + "\'");
 
         // Catch exception if at any point file could not be used
         } catch (FileNotFoundException e) {
