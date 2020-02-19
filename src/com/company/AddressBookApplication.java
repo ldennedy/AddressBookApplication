@@ -1,15 +1,29 @@
+/**The Main class used to prompt menu commands
+ * and create address objects to be placed in the book.
+ @author Lauren Dennedy
+ @since February 2020
+ @version 1
+ **/
+
 package com.company;
 
-// The main class for the AddressBookApplication
-public class Main {
+public class AddressBookApplication {
 
+    /**
+     * The main method to start the AddressBookApplication
+     * @param args Arguments to accept when calling main
+     */
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
         //initAddressBookExercise(addressBook);
-        addressBook.init("AddressInputDataFile.txt");
+        addressBook.readFromFile("AddressInputDataFile.txt");
         addressBook.list();
     }
 
+    /**
+     * A testing method to take new addresses from user input using the menu prompt methods
+     * @param ab The AddressBook new entries will be added to
+     */
     public static void initAddressBookExercise(AddressBook ab) {
         // Variables to store entry information
         String fName, lName, street, city, state, tel, email;

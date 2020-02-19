@@ -1,3 +1,11 @@
+/**The AddressBook class represents an AddressBook
+ with a list for address entries and methods
+ to take in the addresses.
+ @author Lauren Dennedy
+ @since February 2020
+ @version 1
+ **/
+
 package com.company;
 
 import java.util.ArrayList;
@@ -7,26 +15,52 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-// AddressBook class
 public class AddressBook {
-    // List of addresses
+
+    /**
+     * List of AddressEntry objects to comprise the AddressBook
+     */
     private List<AddressEntry> addresses;
 
-    // Empty constructor
+    /**
+     * Empty constructor for the AddressBook, initialized with zero entries
+     */
     public AddressBook() { addresses = new ArrayList<>(); }
 
-    // Add address
+    /**
+     * Add an entry to the AddressBook's addresses list
+     * @param e The entry added to the list
+     */
     public void add(AddressEntry e) { addresses.add(e); }
 
-    // Print the whole book
+    /**
+     * Remove an entry from the AddressBook's addresses list
+     * @param lastName The entry removed from the list according to last name
+     */
+    // TODO: Finish this method -- Check UML for project
+    public void remove(String lastName) {
+        return;
+        /*
+        for (AddressEntry entry: addresses) {
+            // Not sure how to fill this out
+        }
+        */
+    }
+
+    /**
+     * Prints out the entries of the addresses list with their toString methods
+     */
     public void list() {
         for (AddressEntry e: addresses) {
             System.out.println(e);
         }
     }
 
-    // init function to start AddressBook with its own file
-    public void init(String filename) {
+    /**
+     * A method to populate the addresses list with formatted address entries from a file
+     * @param filename The string of the filename to be used to get entries from
+     */
+    public void readFromFile(String filename) {
         try {
             // Set up objects to begin reading the file
             File file = new File(filename);
@@ -103,6 +137,8 @@ public class AddressBook {
                         // Add entry to book
                         this.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
                 }
+
+                // Loop item to read based on 8 items for an address
                 index = (index + 1) % 8;
             }
 
