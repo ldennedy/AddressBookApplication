@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class AddressBook {
-
     /**
      * List of AddressEntry objects to comprise the AddressBook
      */

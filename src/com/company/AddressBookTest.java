@@ -8,7 +8,6 @@
 package com.company;
 
 public class AddressBookTest {
-
     /**
      * AddressBooks testBook1 and testBook2
      */

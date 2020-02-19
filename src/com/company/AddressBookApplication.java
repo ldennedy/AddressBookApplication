@@ -8,7 +8,6 @@
 package com.company;
 
 public class AddressBookApplication {
-
     /**
      * The main method to start the AddressBookApplication
      * @param args Arguments to accept when calling main
@@ -22,6 +21,7 @@ public class AddressBookApplication {
         // Run test classes:
         // AddressBookTest bookTest = new AddressBookTest();
         // AddressEntryTest entryTest = new AddressEntryTest();
+        // MenuTest menuTest = new MenuTest();
     }
 
     /**

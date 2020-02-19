@@ -10,7 +10,6 @@ package com.company;
 import java.util.Scanner;
 
 public class Menu {
-
     /**
      * Scanner object for the menu class to read user input
      */

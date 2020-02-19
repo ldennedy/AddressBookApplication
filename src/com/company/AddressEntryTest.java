@@ -8,7 +8,6 @@
 package com.company;
 
 public class AddressEntryTest {
-
     /**
      * AddressEntries testEntry1 and testEntry2
      */
