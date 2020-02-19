@@ -9,30 +9,20 @@ package com.company;
 
 public class AddressBookTest {
     /**
-     * AddressBooks testBook1 and testBook2
-     */
-    private AddressBook testBook1, testBook2;
-
-    /**
-     * The "constructor" to setup the testBook objects and test AddressBook methods on them
+     * The "constructor" to test static AddressBook methods
      */
     public AddressBookTest() {
-        testBook1 = new AddressBook();
-        testBook2 = new AddressBook();
+        AddressBook.getAddressBook();
+        AddressBook.add(new AddressEntry());
+        AddressBook.add(new AddressEntry());
 
-        testBook1.add(new AddressEntry());
-        testBook2.add(new AddressEntry());
-
-        testBook1.add(new AddressEntry("hello", "goodbye", "123 st",
+        AddressBook.add(new AddressEntry("hello", "goodbye", "123 st",
                 "yellow", "WA", 12345, "123456", "haha@mail.com"));
 
-        testBook2.add(new AddressEntry("yes", "no", "987 way",
+        AddressBook.add(new AddressEntry("yes", "no", "987 way",
                 "blue", "MA", 98765, "0987654", "ohno@mail.com"));
 
-        System.out.println("TestBook1:");
-        testBook1.list();
-
-        System.out.println("TestBook2:");
-        testBook1.list();
+        System.out.println("TestBook:");
+        AddressBook.list();
     }
 }

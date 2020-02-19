@@ -13,10 +13,10 @@ public class AddressBookApplication {
      * @param args Arguments to accept when calling main
      */
     public static void main(String[] args) {
-        AddressBook addressBook = new AddressBook();
         //initAddressBookExercise(addressBook);
-        addressBook.readFromFile("AddressInputDataFile.txt");
-        addressBook.list();
+        AddressBook.getAddressBook();
+        AddressBook.readFromFile("AddressInputDataFile.txt");
+        AddressBook.list();
 
         // Run test classes:
         // AddressBookTest bookTest = new AddressBookTest();

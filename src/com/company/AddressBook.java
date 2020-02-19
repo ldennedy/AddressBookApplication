@@ -17,27 +17,42 @@ import java.io.FileNotFoundException;
 
 public class AddressBook {
     /**
-     * List of AddressEntry objects to comprise the AddressBook
+     * Single AddressBook instance (singleton)
      */
-    private List<AddressEntry> addresses;
+    private static AddressBook addressBook = null;
 
     /**
-     * Empty constructor for the AddressBook, initialized with zero entries
+     * List of AddressEntry objects to comprise the AddressBook
      */
-    public AddressBook() { addresses = new ArrayList<>(); }
+    private static List<AddressEntry> addresses;
+
+    /**
+     * Private constructor to initialize the singleton and the addresses list
+     */
+    private AddressBook() { addresses = new ArrayList<>(); }
+
+    /**
+     * Public AddressBook Getter to call the private constructor
+     */
+    public static AddressBook getAddressBook() {
+        if (addressBook == null) {
+            addressBook = new AddressBook();
+        }
+        return addressBook;
+    }
 
     /**
      * Add an entry to the AddressBook's addresses list
      * @param e The entry added to the list
      */
-    public void add(AddressEntry e) { addresses.add(e); }
+    public static void add(AddressEntry e) { addresses.add(e); }
 
     /**
      * Remove an entry from the AddressBook's addresses list
      * @param lastName The entry removed from the list according to last name
      */
     // TODO: Finish this method -- Check UML for project
-    public void remove(String lastName) {
+    public static void remove(String lastName) {
         return;
         /*
         for (AddressEntry entry: addresses) {
@@ -49,7 +64,7 @@ public class AddressBook {
     /**
      * Prints out the entries of the addresses list with their toString methods
      */
-    public void list() {
+    public static void list() {
         for (AddressEntry e: addresses) {
             System.out.println(e);
         }
@@ -59,7 +74,7 @@ public class AddressBook {
      * A method to populate the addresses list with formatted address entries from a file
      * @param filename The string of the filename to be used to get entries from
      */
-    public void readFromFile(String filename) {
+    public static void readFromFile(String filename) {
         try {
             // Set up objects to begin reading the file
             File file = new File(filename);
@@ -143,7 +158,7 @@ public class AddressBook {
                         }
 
                         // Add entry to book
-                        this.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
+                        addresses.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
                         count++;
                 }
 
