@@ -18,6 +18,8 @@ public class AddressBookApplication {
         //initAddressBookExercise(addressBook);
         addressBook.readFromFile("AddressInputDataFile.txt");
         addressBook.list();
+
+        // AddressBookTest bookTest = new AddressBookTest();
     }
 
     /**
