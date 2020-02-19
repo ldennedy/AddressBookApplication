@@ -1,9 +1,22 @@
+/**The AddressEntryTest class is used to test
+ * AddressEntry methods
+ @author Lauren Dennedy
+ @since February 2020
+ @version 1.1
+ **/
+
 package com.company;
 
 public class AddressEntryTest {
 
+    /**
+     * AddressEntries testEntry1 and testEntry2
+     */
     private AddressEntry testEntry1, testEntry2;
 
+    /**
+     * The "constructor" to setup the testEntry objects and test AddressEntry methods on them
+     */
     public AddressEntryTest() {
         testEntry1 = new AddressEntry();
         testEntry2 = new AddressEntry("hello", "goodbye", "123 st",

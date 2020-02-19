@@ -1,9 +1,22 @@
+/**The AddressBookTest class is used to test
+ * AddressBook methods
+ @author Lauren Dennedy
+ @since February 2020
+ @version 1.1
+ **/
+
 package com.company;
 
 public class AddressBookTest {
 
+    /**
+     * AddressBooks testBook1 and testBook2
+     */
     private AddressBook testBook1, testBook2;
 
+    /**
+     * The "constructor" to setup the testBook objects and test AddressBook methods on them
+     */
     public AddressBookTest() {
         testBook1 = new AddressBook();
         testBook2 = new AddressBook();
