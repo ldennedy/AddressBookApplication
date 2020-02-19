@@ -19,7 +19,9 @@ public class AddressBookApplication {
         addressBook.readFromFile("AddressInputDataFile.txt");
         addressBook.list();
 
+        // Run test classes:
         // AddressBookTest bookTest = new AddressBookTest();
+        // AddressEntryTest entryTest = new AddressEntryTest();
     }
 
     /**
