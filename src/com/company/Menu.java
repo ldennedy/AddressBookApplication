@@ -9,6 +9,19 @@ package com.company;
 
 import java.util.Scanner;
 
+/*
+TODO: Menu has to be able to:
+a. Load entries from a file
+b. Add an entry from user input
+c. Remove an entry based on last name (first you enter your search, and then listed last names will be provided,
+    the user selects from those which to remove
+d. Find/search for an entry based on last name
+e. List all the addresses in alphabetical order
+f. Quit the application
+
+Where to start? Let's start with sorting the list in alphabetical order
+ */
+
 public class Menu {
     /**
      * Scanner object for the menu class to read user input

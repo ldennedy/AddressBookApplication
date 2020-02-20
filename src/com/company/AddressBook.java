@@ -8,10 +8,7 @@
 
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -69,6 +66,23 @@ public class AddressBook {
             System.out.println(e);
         }
     }
+
+
+    /**
+     * Sorts the addresses list using comparators for the first and last name of an entry.
+     * Sorts first by last name, then first name.
+     */
+    public static void sort() {
+        // Compares last names
+        Comparator<AddressEntry> lNameComparator = Comparator.comparing(AddressEntry::getLastName);
+
+        // Compares first names
+        Comparator<AddressEntry> fNameComparator = Comparator.comparing(AddressEntry::getFirstName);
+
+        // Then sorts with regards to both, sorting by last name, then first name
+        Collections.sort(addresses, lNameComparator.thenComparing(fNameComparator));
+    }
+
 
     /**
      * A method to populate the addresses list with formatted address entries from a file
@@ -172,6 +186,7 @@ public class AddressBook {
             // Close the file
             fileReader.close();
             System.out.println(count + " addresses were successfully read from the file \'" + filename + "\'");
+            sort();
 
         // Catch exception if at any point file could not be used
         } catch (FileNotFoundException e) {
