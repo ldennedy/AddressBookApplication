@@ -52,7 +52,7 @@ public class Menu {
         System.out.println("F.) Quit");
         System.out.println("============================================");
         System.out.print("\nPlease enter a letter for your selection: ");
-        String in = reader.next().toUpperCase();
+        String in = reader.nextLine().toUpperCase();
         while (!(in.equals("A") || in.equals("B") || in.equals("C") || in.equals("D") || in.equals("E") || in.equals("F"))) {
             System.out.print("\nPlease enter a letter for your selection: ");
             in = reader.nextLine().toUpperCase();
