@@ -55,7 +55,7 @@ public class Menu {
         String in = reader.next().toUpperCase();
         while (!(in.equals("A") || in.equals("B") || in.equals("C") || in.equals("D") || in.equals("E") || in.equals("F"))) {
             System.out.print("\nPlease enter a letter for your selection: ");
-            in = reader.next().toUpperCase();
+            in = reader.nextLine().toUpperCase();
         }
 
         // Reading File option
@@ -75,6 +75,7 @@ public class Menu {
             } catch (FileNotFoundException e) {
                 System.out.println("The file \'" + in + "\' could not be found.");
             }
+            display();
 
         // Adding entry option
         } else if (in.equals("B")) {
@@ -95,6 +96,7 @@ public class Menu {
 
             // Add new address once complete
             AddressBook.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
+            display();
 
         // Removing entry option
         } else if (in.equals("C")) {
@@ -108,17 +110,29 @@ public class Menu {
                     System.out.println(tracker + ": " + entry);
                     tracker++;
                 }
+
+                int num = 0;
                 System.out.print("Which would you like to remove? ");
-                int num = reader.nextInt();
+                try {
+                    num = Integer.parseInt(reader.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("That's not a valid number.");
+                }
+
                 while (num > tracker || num <= 0) {
                     System.out.print("Which would you like to remove? ");
-                    num = reader.nextInt();
+                    try {
+                        num = Integer.parseInt(reader.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("That's not a valid number.");
+                    }
                 }
                 AddressBook.remove(entries.get(num-1));
 
             } else {
                 System.out.println("No matching entries were found.");
             }
+            display();
 
         // Searching option
         } else if (in.equals("D")) {
@@ -133,17 +147,18 @@ public class Menu {
             } else {
                 System.out.println("No matching entries were found.");
             }
+            display();
 
         // Listing option
         } else if (in.equals("E")) {
             AddressBook.list();
-            in = "";
+            display();
 
         // Quit option
         } else if (in.equals("F")) {
             System.out.println("Thank you for using the Address Book! Goodbye!");
 
-        // Call display again if input is not a valid letter again (means previous options have completed)
+        // Call display again if input is not a valid letter (just in case)
         } else {
             display();
         }
