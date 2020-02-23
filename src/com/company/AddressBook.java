@@ -21,7 +21,7 @@ public class AddressBook {
     /**
      * List of AddressEntry objects to comprise the AddressBook
      */
-    private static List<AddressEntry> addresses;
+    private static ArrayList<AddressEntry> addresses;
 
     /**
      * Private constructor to initialize the singleton and the addresses list
@@ -48,14 +48,15 @@ public class AddressBook {
      * Remove an entry from the AddressBook's addresses list
      * @param lastName The entry removed from the list according to last name
      */
-    // TODO: Finish this method -- Check UML for project
+    /*
+       TODO: This method cannot remove solely on the case of lastName alone, because
+       TODO: then it could remove more than one entry at a time and the user needs
+       TODO: a choice in that. My method takes in an object for removal instead,
+       TODO: and the choice granted by searching for last name is handled in the
+       TODO: menu instead.
+     */
     public static void remove(String lastName) {
-        return;
-        /*
-        for (AddressEntry entry: addresses) {
-            // Not sure how to fill this out
-        }
-        */
+
     }
 
     /**
@@ -83,6 +84,50 @@ public class AddressBook {
         Collections.sort(addresses, lNameComparator.thenComparing(fNameComparator));
     }
 
+    /**
+     * Find method....
+     */
+    public static List<AddressEntry> find(String startOfLastName) {
+        // Make sure list is sorted first
+        sort();
+
+        // Final list of all matching entries
+        List<AddressEntry> matchingEntries = new ArrayList<>();
+
+        // List of indices that match the searching algorithm
+        List<Integer> matchingEntryIndices = new ArrayList<>();
+
+        // List of just last name strings for comparison
+        List<String> lastNameStrings = new ArrayList<>();
+
+        // Populate the last name strings from the record of addresses
+        for (AddressEntry entry: addresses) {
+            lastNameStrings.add(entry.getLastName());
+        }
+
+        // Adds the index of the first matching name to the matching indices list.
+        matchingEntryIndices.add(Collections.binarySearch(lastNameStrings, startOfLastName));
+
+        // Check any others after that
+        int startIndex = matchingEntryIndices.get(0);
+
+        // If at least one match was found, check linearly for any others after that (same last name)
+        if (startIndex >= 0) {
+            int i = startIndex + 1;
+            while (i < lastNameStrings.size() && lastNameStrings.get(i).equals(startOfLastName)) {
+                matchingEntryIndices.add(i);
+                i++;
+            }
+        }
+
+        // Populate the matching entries list from the matching indices and return it
+        for (Integer j: matchingEntryIndices) {
+            if (j >= 0) {
+                matchingEntries.add(addresses.get(j));
+            }
+        }
+        return matchingEntries;
+    }
 
     /**
      * A method to populate the addresses list with formatted address entries from a file
@@ -113,35 +158,35 @@ public class AddressBook {
                             fName = fileReader.nextLine();
                             // Debug output: System.out.println("First name read: " + fName);
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
                     case 1:
                         try {
                             lName = fileReader.nextLine();
                             // Debug output: System.out.println("Last name read: " + lName);
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
                     case 2:
                         try {
                             street = fileReader.nextLine();
                             // Debug output: System.out.println("Street read: " + street);
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
                     case 3:
                         try {
                             city = fileReader.nextLine();
                             // Debug output: System.out.println("City read: " + city);
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
                     case 4:
                         try {
                             state = fileReader.nextLine();
                             // Debug output: System.out.println("State read: " + state);
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
                     case 5:
                         try {
@@ -150,10 +195,10 @@ public class AddressBook {
                                 zip = Integer.parseInt(temp);
                                 // Debug output: System.out.println("Zip code read: " + zip);
                             } catch (NumberFormatException e) {
-                                System.out.println("Improper zip in file.");
+                                System.out.println("Improper zip in file. Make sure entries in the .txt file have all 8 data items.");
                             }
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
 
                     case 6:
@@ -161,14 +206,14 @@ public class AddressBook {
                             email = fileReader.nextLine();
                             // Debug output: System.out.println("Email address read: " + email);
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
                     case 7:
                         try {
                             tel = fileReader.nextLine();
                             // Debug output: System.out.println("Telephone number read: " + tel);
                         } catch (NoSuchElementException e) {
-                            System.out.println("Reached EOF while parsing.");
+                            System.out.println("Reached EOF while parsing. Make sure entries in the .txt file have all 8 data items.");
                         }
 
                         // Add entry to book

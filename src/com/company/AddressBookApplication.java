@@ -19,7 +19,7 @@ public class AddressBookApplication {
         AddressBook.list();
 
         // Run test classes:
-        // AddressBookTest bookTest = new AddressBookTest();
+        AddressBookTest bookTest = new AddressBookTest();
         // AddressEntryTest entryTest = new AddressEntryTest();
         // MenuTest menuTest = new MenuTest();
     }

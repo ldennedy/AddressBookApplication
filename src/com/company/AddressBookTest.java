@@ -24,5 +24,8 @@ public class AddressBookTest {
 
         System.out.println("TestBook:");
         AddressBook.list();
+
+        System.out.println(AddressBook.find("goodbye"));
+        System.out.println(AddressBook.find("n"));
     }
 }

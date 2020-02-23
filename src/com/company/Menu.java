@@ -28,6 +28,10 @@ public class Menu {
      */
     private static Scanner reader = new Scanner(System.in);
 
+    public static void loadFile(String filename) {
+        
+    }
+
     /**
      * Prompt method to enter a first name
      * @return The first name the user entered as a string
