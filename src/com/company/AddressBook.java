@@ -46,18 +46,16 @@ public class AddressBook {
 
     /**
      * Remove an entry from the AddressBook's addresses list
-     * @param lastName The entry removed from the list according to last name
+     * @param e The entry removed from the list
      */
     /*
        TODO: This method cannot remove solely on the case of lastName alone, because
        TODO: then it could remove more than one entry at a time and the user needs
-       TODO: a choice in that. My method takes in an object for removal instead,
+       TODO: a choice in that. This method takes in an object for removal instead,
        TODO: and the choice granted by searching for last name is handled in the
        TODO: menu instead.
      */
-    public static void remove(String lastName) {
-
-    }
+    public static void remove(AddressEntry e) { addresses.remove(e); }
 
     /**
      * Prints out the entries of the addresses list with their toString methods

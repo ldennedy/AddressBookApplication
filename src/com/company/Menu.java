@@ -7,29 +7,146 @@
 
 package com.company;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
-
-/*
-TODO: Menu has to be able to:
-a. Load entries from a file
-b. Add an entry from user input
-c. Remove an entry based on last name (first you enter your search, and then listed last names will be provided,
-    the user selects from those which to remove
-d. Find/search for an entry based on last name
-e. List all the addresses in alphabetical order
-f. Quit the application
-
-Where to start? Let's start with sorting the list in alphabetical order
- */
 
 public class Menu {
     /**
+     * Single Menu instance (singleton)
+     */
+    private static Menu menu = null;
+
+    /**
      * Scanner object for the menu class to read user input
      */
-    private static Scanner reader = new Scanner(System.in);
+    private static Scanner reader;
 
-    public static void loadFile(String filename) {
-        
+    /**
+     * Private constructor to initialize the singleton and scanner
+     */
+    private Menu() { reader = new Scanner(System.in); }
+
+    /**
+     * Public Menu Getter to call the private constructor
+     */
+    public static Menu getMenu() {
+        if (menu == null) {
+            menu = new Menu();
+        }
+        return menu;
+    }
+
+    /**
+     * Method to display the menu and handle inputs to redirect to other methods
+     */
+    public static void display() {
+        System.out.println("\n============================================");
+        System.out.println("Options:");
+        System.out.println("A.) Load a file ");
+        System.out.println("B.) Add an entry");
+        System.out.println("C.) Remove an entry");
+        System.out.println("D.) Find entries");
+        System.out.println("E.) List the Address Book");
+        System.out.println("F.) Quit");
+        System.out.println("============================================");
+        System.out.print("\nPlease enter a letter for your selection: ");
+        String in = reader.next().toUpperCase();
+        while (!(in.equals("A") || in.equals("B") || in.equals("C") || in.equals("D") || in.equals("E") || in.equals("F"))) {
+            System.out.print("\nPlease enter a letter for your selection: ");
+            in = reader.next().toUpperCase();
+        }
+
+        // Reading File option
+        if (in.equals("A")) {
+            System.out.print("\nPlease enter a filename to read: ");
+            in = reader.nextLine();
+            try {
+                // Temporarily create these objects to make sure string name is valid
+                File f = new File(in);
+                Scanner t = new Scanner(f);
+                t.close();
+                // Free the memory after this point if no exception was thrown
+                t = null;
+                f = null;
+                // Call AddressBook to read the file
+                AddressBook.readFromFile(in);
+            } catch (FileNotFoundException e) {
+                System.out.println("The file \'" + in + "\' could not be found.");
+            }
+
+        // Adding entry option
+        } else if (in.equals("B")) {
+            String fName, lName, street, city, state, tel, email;
+            int zip;
+
+            // Prompt menu commands to accept a new address
+            fName = promptFirstName();
+            lName = promptLastName();
+
+            street = promptStreet();
+            city = promptCity();
+            state = promptState();
+            zip = promptZip();
+
+            tel = promptTelephone();
+            email = promptEmail();
+
+            // Add new address once complete
+            AddressBook.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
+
+        // Removing entry option
+        } else if (in.equals("C")) {
+            System.out.print("Enter a last name to search for removal: ");
+            in = reader.nextLine();
+            List<AddressEntry> entries = AddressBook.find(in);
+            if (entries.size() >= 1) {
+                int tracker = 1;
+                System.out.println("The following entries were found: ");
+                for (AddressEntry entry: entries) {
+                    System.out.println(tracker + ": " + entry);
+                    tracker++;
+                }
+                System.out.print("Which would you like to remove? ");
+                int num = reader.nextInt();
+                while (num > tracker || num <= 0) {
+                    System.out.print("Which would you like to remove? ");
+                    num = reader.nextInt();
+                }
+                AddressBook.remove(entries.get(num-1));
+
+            } else {
+                System.out.println("No matching entries were found.");
+            }
+
+        // Searching option
+        } else if (in.equals("D")) {
+            System.out.print("Enter a last name to search for: ");
+            in = reader.nextLine();
+            List<AddressEntry> entries = AddressBook.find(in);
+            if (entries.size() >= 1) {
+                System.out.println("The following entries were found: ");
+                for (AddressEntry entry: entries) {
+                    System.out.println(entry);
+                }
+            } else {
+                System.out.println("No matching entries were found.");
+            }
+
+        // Listing option
+        } else if (in.equals("E")) {
+            AddressBook.list();
+            in = "";
+
+        // Quit option
+        } else if (in.equals("F")) {
+            System.out.println("Thank you for using the Address Book! Goodbye!");
+
+        // Call display again if input is not a valid letter again (means previous options have completed)
+        } else {
+            display();
+        }
     }
 
     /**
