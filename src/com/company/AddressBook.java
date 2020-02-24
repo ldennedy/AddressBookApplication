@@ -104,16 +104,13 @@ public class AddressBook {
 
         // Comparator to find the first item containing
         Comparator<String> containsComparator = (o1, o2) -> {
+            // Modified comparator so any string containing the first chars of last name is considered a complete match
             if (o1.contains(o2)) {
                 return 0;
-            } else if (o2.contains(o1)) {
-                return 1;
             } else {
-                return -1;
+                return o1.compareTo(o2);
             }
         };
-
-        //matchingEntryIndices.add(Collections.binarySearch(lastNameStrings, startOfLastName));
 
         // Adds the index of the first matching name to the matching indices list.
         matchingEntryIndices.add(Collections.binarySearch(lastNameStrings, startOfLastName, containsComparator));
