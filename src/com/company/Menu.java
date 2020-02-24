@@ -1,5 +1,4 @@
-/**The Menu class represents the menu the user
- * interacts with at the console level
+/**
  @author Lauren Dennedy
  @since February 2020
  @version 1.2
@@ -12,6 +11,10 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The Menu class represents the menu the user
+ * interacts with at the console level
+ */
 public class Menu {
     /**
      * Single Menu instance (singleton)

@@ -1,6 +1,4 @@
-/**The AddressBook class represents an AddressBook
- with a list for address entries and methods
- to take in the addresses.
+/**
  @author Lauren Dennedy
  @since February 2020
  @version 1.2
@@ -12,6 +10,11 @@ import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * The AddressBook class represents an AddressBook
+ * with a list for address entries and methods to
+ * take in the addresses.
+ */
 public class AddressBook {
     /**
      * Single AddressBook instance (singleton)

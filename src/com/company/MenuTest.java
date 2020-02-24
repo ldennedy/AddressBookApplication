@@ -1,6 +1,4 @@
-/**The MenuTest class tests the functionality of each menu method
- * Methods are called statically, because the original menu class
- * is static
+/**
  @author Lauren Dennedy
  @since February 2020
  @version 1.2
@@ -8,6 +6,11 @@
 
 package com.company;
 
+/**
+ * The MenuTest class tests the functionality of each menu method
+ * Methods are called statically, because the original menu class
+ * is static
+ **/
 public class MenuTest {
     /**
      * The "constructor" to call the static menu methods

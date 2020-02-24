@@ -1,5 +1,4 @@
-/**The AddressEntryTest class is used to test
- * AddressEntry methods
+/**
  @author Lauren Dennedy
  @since February 2020
  @version 1.2
@@ -7,6 +6,10 @@
 
 package com.company;
 
+/**
+ * The AddressEntryTest class is used to test
+ * AddressEntry methods
+ */
 public class AddressEntryTest {
     /**
      * AddressEntries testEntry1 and testEntry2

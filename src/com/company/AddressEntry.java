@@ -1,5 +1,4 @@
-/**The AddressEntry class represents a specific
- * address entry to be placed in an AddressBook object
+/**
  @author Lauren Dennedy
  @since February 2020
  @version 1.2
@@ -7,6 +6,10 @@
 
 package com.company;
 
+/**
+ * The AddressEntry class represents a specific
+ * address entry to be placed in an AddressBook object
+ */
 public class AddressEntry {
     /**
      * String variables store first name, last name, street, city, state,

@@ -1,5 +1,4 @@
-/**The AddressBookTest class is used to test
- * AddressBook methods
+/**
  @author Lauren Dennedy
  @since February 2020
  @version 1.2
@@ -7,6 +6,10 @@
 
 package com.company;
 
+/**
+ * The AddressBookTest class is used to test
+ * AddressBook methods
+ */
 public class AddressBookTest {
     /**
      * The "constructor" to test static AddressBook methods

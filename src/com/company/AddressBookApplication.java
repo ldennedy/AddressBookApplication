@@ -1,5 +1,4 @@
-/**The Main class used to prompt menu commands
- * and create address objects to be placed in the book.
+/**
  @author Lauren Dennedy
  @since February 2020
  @version 1.2
@@ -7,6 +6,9 @@
 
 package com.company;
 
+/**
+ * The Main class used to start the menu.
+ */
 public class AddressBookApplication {
     /**
      * The main method to start the AddressBookApplication
