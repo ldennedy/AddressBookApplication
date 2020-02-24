@@ -2,7 +2,7 @@
  * interacts with at the console level
  @author Lauren Dennedy
  @since February 2020
- @version 1.1
+ @version 1.2
  **/
 
 package com.company;

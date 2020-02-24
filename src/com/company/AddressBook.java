@@ -3,7 +3,7 @@
  to take in the addresses.
  @author Lauren Dennedy
  @since February 2020
- @version 1.1
+ @version 1.2
  **/
 
 package com.company;
@@ -46,14 +46,12 @@ public class AddressBook {
 
     /**
      * Remove an entry from the AddressBook's addresses list
+     * TODO: This method cannot remove solely on the case of lastName alone, because
+     *       then it could remove more than one entry at a time and the user needs
+     *       a choice in that. This method takes in an object for removal instead,
+     *       and the choice granted by searching for last name is handled in the
+     *       menu instead.
      * @param e The entry removed from the list
-     */
-    /*
-       TODO: This method cannot remove solely on the case of lastName alone, because
-       TODO: then it could remove more than one entry at a time and the user needs
-       TODO: a choice in that. This method takes in an object for removal instead,
-       TODO: and the choice granted by searching for last name is handled in the
-       TODO: menu instead.
      */
     public static void remove(AddressEntry e) { addresses.remove(e); }
 
@@ -65,7 +63,6 @@ public class AddressBook {
             System.out.println(e);
         }
     }
-
 
     /**
      * Sorts the addresses list using comparators for the first and last name of an entry.
@@ -83,7 +80,9 @@ public class AddressBook {
     }
 
     /**
-     * Find method....
+     * Finds entries matching a string of the last name.
+     * @param startOfLastName The string of the last name to search entries for
+     * @return A list of matching entries
      */
     public static List<AddressEntry> find(String startOfLastName) {
         // Make sure list is sorted first
@@ -112,7 +111,7 @@ public class AddressBook {
         // If at least one match was found, check linearly for any others after that (same last name)
         if (startIndex >= 0) {
             int i = startIndex + 1;
-            while (i < lastNameStrings.size() && lastNameStrings.get(i).equals(startOfLastName)) {
+            while (i < lastNameStrings.size() && lastNameStrings.get(i).contains(startOfLastName)) {
                 matchingEntryIndices.add(i);
                 i++;
             }

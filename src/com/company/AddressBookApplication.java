@@ -2,7 +2,7 @@
  * and create address objects to be placed in the book.
  @author Lauren Dennedy
  @since February 2020
- @version 1.1
+ @version 1.2
  **/
 
 package com.company;
