@@ -159,7 +159,7 @@ public class AddressEntry {
      */
     public String toString() {
         return "\n" + firstName + " " + lastName +
-                "\n\n" + street + "\n" + city + ", " + state + "\n" + zip +
-                "\n\n" + email + "\n" + phone;
+                "\n" + street + "\n" + city + ", " + state + "\n" + zip +
+                "\n" + email + "\n" + phone + "\n";
     }
 }
