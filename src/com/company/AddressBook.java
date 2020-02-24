@@ -102,8 +102,21 @@ public class AddressBook {
             lastNameStrings.add(entry.getLastName());
         }
 
+        Comparator<String> containsComparator = (o1, o2) -> {
+            if (o1.contains(o2)) {
+                return 0;
+            } else if (o2.contains(o1)) {
+                return 1;
+            } else {
+                return -1;
+            }
+        };
+
+        //matchingEntryIndices.add(Collections.binarySearch(lastNameStrings, startOfLastName));
+
         // Adds the index of the first matching name to the matching indices list.
-        matchingEntryIndices.add(Collections.binarySearch(lastNameStrings, startOfLastName));
+        matchingEntryIndices.add(Collections.binarySearch(lastNameStrings, startOfLastName, containsComparator));
+
 
         // Check any others after that
         int startIndex = matchingEntryIndices.get(0);

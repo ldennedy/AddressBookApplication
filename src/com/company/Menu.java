@@ -96,6 +96,7 @@ public class Menu {
 
             // Add new address once complete
             AddressBook.add(new AddressEntry(fName, lName, street, city, state, zip, tel, email));
+            AddressBook.sort();
             display();
 
         // Removing entry option
@@ -132,6 +133,7 @@ public class Menu {
             } else {
                 System.out.println("No matching entries were found.");
             }
+            AddressBook.sort();
             display();
 
         // Searching option
