@@ -30,6 +30,7 @@ public class AddressBook {
 
     /**
      * Public AddressBook Getter to call the private constructor
+     * @return the AddressBook to be used as the singleton
      */
     public static AddressBook getAddressBook() {
         if (addressBook == null) {

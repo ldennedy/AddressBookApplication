@@ -30,6 +30,7 @@ public class Menu {
 
     /**
      * Public Menu Getter to call the private constructor
+     * @return the Menu to be used as the singleton
      */
     public static Menu getMenu() {
         if (menu == null) {
